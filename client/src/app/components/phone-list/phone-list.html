@@ -1,7 +1,7 @@
 <ul class="phone-list">
   <li *ngFor="let phone of phones">
     <span class="phone-info">
-      {{ phone.name }} - ({{ phone }})
+      {{ phone.name }} - ({{ phone.number }})
     </span>
     <span class="phone-actions">
       <button (click)="edit.emit(phone)">Edit</button>

@@ -16,11 +16,11 @@ export class PhonePage {
   editing = false;
 
   constructor(private service: PhoneService) {
-    this.loadphones();
+    this.loadPhones();
   }
 
-  loadphones(): void {
-    this.service.getAll().subscribe(data => this.phones = data);
+  loadPhones(): void {
+    this.service.getAll().subscribe(data => {this.phones = data;console.log('Phones loaded:', data);});
   }
 
   startAdd() {
@@ -35,15 +35,16 @@ export class PhonePage {
 
   onSave(phone: PhoneModel) {
     if (phone.id) {
-      this.service.update(phone.id, phone).subscribe(() => this.loadphones());
+      this.service.update(phone.id, phone).subscribe(() => this.loadPhones());
     } else {
-      this.service.create(phone).subscribe(() => this.loadphones());
+      console.log('Creating new phone:', phone);
+      this.service.create(phone).subscribe(() => this.loadPhones());
     }
     this.editing = false;
   }
 
   onDelete(id: string) {
-    this.service.delete(id).subscribe(() => this.loadphones());
+    this.service.delete(id).subscribe(() => this.loadPhones());
   }
 
   onCancel() {

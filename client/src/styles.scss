@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+h2 {
+  text-align: center;
+  color: #004d40;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+  background-color: #e0f2f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input {
+  padding: 8px 12px;
+  border: 1.5px solid #00796b;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #004d40;
+  background-color: #b2dfdb;
+}
+.btn-cancel {
+  background-color: #791200;
+  color: white;
+  font-weight: 600;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #a02a1a;
+}
+form button[type="submit"] {
+  background-color: #00796b;
+  color: white;
+  font-weight: 600;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+form button[type="submit"]:hover {
+  background-color: #004d40;
+}
+form button[type="submit"]:disabled {
+  background-color: #b2dfdb; /* jasna zieleń */
+  color: #004d40; /* ciemniejszy tekst */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+/* Lista gier planszowych */
+.phone-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+}
+
+.phone-list li {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.phone-list li:last-child {
+  border-bottom: none;
+}
+
+.phone-list li div {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #004d40;
+}
+
+/* Przycisk edytuj / usuń w liście */
+.phone-list button {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.phone-list button:hover {
+  background-color: #004d40;
+}
+
+.phone-list button + button {
+  margin-left: 8px;
+}
+.phone-info {
+  /* tekst z lewej strony */
+  flex-grow: 1; /* zajmuje całą dostępną szerokość */
+}
+
+.phone-actions {
+  /* kontener przycisków po prawej */
+  display: flex;
+  gap: 8px;
+}
+.add-button-container {
+  max-width: 400px;
+  margin: 0 auto 30px auto; /* wyśrodkowanie i odstęp dolny */
+  text-align: center; /* by przycisk był wyśrodkowany w kontenerze */
+}
+
+.btn-add {
+  background-color: #00796b;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* zajmuje całą szerokość kontenera, podobnie jak inputy w formularzu */
+  font-size: 1rem;
+}
+
+.btn-add:hover {
+  background-color: #004d40;
+}

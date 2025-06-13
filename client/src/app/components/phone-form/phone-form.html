@@ -1,6 +1,31 @@
-<form (ngSubmit)="onSubmit()">
-      <input [(ngModel)]="phone.number" name="number" placeholder="number" required />
-      <input [(ngModel)]="phone.name" name="name" placeholder="name" required />
-      <button type="submit">Save</button>
-      <button type="button" class="btn-cancel" (click)="cancel.emit()">Cancel</button>
-    </form>
+<form #phoneForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <input
+  [(ngModel)]="phone.number"
+  name="number"
+  placeholder="number"
+  required
+  pattern="[0-9]{9}"
+  #numberCtrl="ngModel"
+/>
+
+  <div *ngIf="numberCtrl.invalid && numberCtrl.touched" class="error">
+    <div *ngIf="numberCtrl.errors?.required">Numer jest wymagany.</div>
+    <div *ngIf="numberCtrl.errors?.pattern">Numer musi mieć dokładnie 9 cyfr.</div>
+  </div>
+
+  <input
+    [(ngModel)]="phone.name"
+    name="name"
+    placeholder="name"
+    required
+    maxlength="15"
+    #nameCtrl="ngModel"
+  />
+  <div *ngIf="nameCtrl.invalid && nameCtrl.touched" class="error">
+    <div *ngIf="nameCtrl.errors?.required">Nazwa jest wymagana.</div>
+    <div *ngIf="nameCtrl.errors?.maxlength">Nazwa może mieć maks. 15 znaków.</div>
+  </div>
+
+  <button type="submit" [disabled]="phoneForm.invalid">Save</button>
+  <button type="button" class="btn-cancel" (click)="cancel.emit()">Cancel</button>
+</form>
