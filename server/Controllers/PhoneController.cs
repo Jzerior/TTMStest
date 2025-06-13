@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TTMStest.Server.Interfaces.IRepositories;
 using TTMStest.Server.Models;
-
+using TTMStest.Server.DTOs.PhoneDTOs;
 namespace TTMStest.Server.Controllers
 {
     [Route("api/phone")]
@@ -23,7 +23,7 @@ namespace TTMStest.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPhoneById(int id)
+        public async Task<IActionResult> GetPhoneById([FromRoute] int id)
         {
             var phone = await _phoneRepository.GetPhoneByIdAsync(id);
             if (phone == null)
@@ -32,7 +32,7 @@ namespace TTMStest.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhone([FromBody] Phone phone)
+        public async Task<IActionResult> AddPhone([FromBody] CreatePhoneRequestDto phone)
         {
             Console.WriteLine($"Dodawanie telefonu: Name={phone.Name}, Number={phone.Number}");
             if (!ModelState.IsValid)
@@ -43,7 +43,7 @@ namespace TTMStest.Server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePhone(int id, [FromBody] Phone phone)
+        public async Task<IActionResult> UpdatePhone([FromRoute] int id, [FromBody] UpdatePhoneRequestDto phone)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -56,7 +56,7 @@ namespace TTMStest.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePhone(int id)
+        public async Task<IActionResult> DeletePhone([FromRoute] int id)
         {
             var deletedPhone = await _phoneRepository.DeletePhoneAsync(id);
             if (deletedPhone == null)

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TTMStest.Server.Models
+namespace TTMStest.Server.DTOs.PhoneDTOs
 {
     public class UpdatePhoneRequestDto
     {
