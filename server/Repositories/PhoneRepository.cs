@@ -1,0 +1,50 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+namespace TTMStest.Server.Repositories;
+
+public class PhoneRepository : IPhoneRepository
+{
+    private readonly List<Phone> _phones = new List<Phone>();
+    private int _nextId = 1;
+
+    public Task<IEnumerable<Phone>> GetAllPhonesAsync()
+    {
+        return Task.FromResult(_phones.AsEnumerable());
+    }
+
+    public Task<Phone?> GetPhoneByIdAsync(int id)
+    {
+        var phone = _phones.FirstOrDefault(p => p.Id == id);
+        return Task.FromResult(phone);
+    }
+
+    public Task<Phone> AddPhoneAsync(Phone phone)
+    {
+        phone.Id = _nextId++;
+        _phones.Add(phone);
+        return Task.FromResult(phone);
+    }
+
+    public Task<Phone?> UpdatePhoneAsync(int id, Phone phone)
+    {
+        var existing = _phones.FirstOrDefault(p => p.Id == id);
+        if (existing == null)
+            return Task.FromResult<Phone?>(null);
+
+        existing.Name = phone.Name;
+        existing.Number = phone.Number;
+
+        return Task.FromResult(existing);
+    }
+
+    public Task<Phone?> DeletePhoneAsync(int id)
+    {
+        var phone = _phones.FirstOrDefault(p => p.Id == id);
+        if (phone != null)
+        {
+            _phones.Remove(phone);
+        }
+        return Task.FromResult(phone);
+    }
+}
