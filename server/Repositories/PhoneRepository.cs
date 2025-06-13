@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TTMStest.Server.Interfaces.IRepositories;
+using TTMStest.Server.Models;
+
 namespace TTMStest.Server.Repositories;
 
 public class PhoneRepository : IPhoneRepository
