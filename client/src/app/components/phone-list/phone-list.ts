@@ -11,5 +11,5 @@ import { PhoneModel } from '../../models/phone-model';
 export class PhoneList {
   @Input() phones: PhoneModel[] = [];
   @Output() edit = new EventEmitter<PhoneModel>();
-  @Output() delete = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<string>();
 }

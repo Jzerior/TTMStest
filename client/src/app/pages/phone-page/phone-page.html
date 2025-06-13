@@ -1,1 +1,12 @@
-<p>phone-page works!</p>
+<h2>Phone List</h2>
+<app-phone-form
+  [phone]="selectedPhone"
+  (save)="onSave($event)"
+  (cancel)="onCancel()"/>
+  <div class="add-button-container" *ngIf="!editing">
+         <button (click)="startAdd()" class="btn-add">Add New Game</button>
+    </div>
+<app-phone-list
+  [phones]="phones"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)"/>
