@@ -1,1 +1,11 @@
-<p>phone-list works!</p>
+<ul class="phone-list">
+  <li *ngFor="let phone of phones">
+    <span class="phone-info">
+      {{ phone.name }} - ({{ phone }})
+    </span>
+    <span class="phone-actions">
+      <button (click)="edit.emit(phone)">Edit</button>
+      <button (click)="delete.emit(phone.id!)">Delete</button>
+    </span>
+  </li>
+</ul>
