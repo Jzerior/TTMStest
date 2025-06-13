@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TTMStest.Server.Interfaces.IRepositories;
 using TTMStest.Server.Models;
+using TTMStest.Server.DTOs.PhoneDTOs;
 
 namespace TTMStest.Server.Repositories;
 
@@ -22,14 +23,16 @@ public class PhoneRepository : IPhoneRepository
         return Task.FromResult(phone);
     }
 
-    public Task<Phone> AddPhoneAsync(Phone phone)
+    public Task<Phone> AddPhoneAsync(CreatePhoneRequestDto phone)
     {
+        Console.WriteLine($"Dodawanie telefonu: Name={phone.Name}, Number={phone.Number}");
         phone.Id = _nextId++;
         _phones.Add(phone);
+        Console.WriteLine(_phones.Count);
         return Task.FromResult(phone);
     }
 
-    public Task<Phone?> UpdatePhoneAsync(int id, Phone phone)
+    public Task<Phone?> UpdatePhoneAsync(int id, UpdatePhoneRequestDto phone)
     {
         var existing = _phones.FirstOrDefault(p => p.Id == id);
         if (existing == null)

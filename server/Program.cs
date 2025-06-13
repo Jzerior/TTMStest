@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IPhoneRepository, PhoneRepository>();
+builder.Services.AddSingleton<IPhoneRepository, PhoneRepository>();
 
 var app = builder.Build();
 
@@ -20,7 +20,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 
