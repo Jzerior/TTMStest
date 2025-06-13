@@ -10,7 +10,7 @@ namespace TTMStest.Server.Interfaces.IRepositories
         Task<IEnumerable<Phone>> GetAllPhonesAsync();
         Task<Phone?> GetPhoneByIdAsync(int id);
         Task<Phone> AddPhoneAsync(Phone phone);
-        Task<Phone?> UpdatePhoneAsync(Phone phone);
+        Task<Phone?> UpdatePhoneAsync(int id, Phone phone);
         Task<Phone?> DeletePhoneAsync(int id);
     }
 }
