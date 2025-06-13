@@ -1,8 +1,10 @@
 <h2>Phone List</h2>
 <app-phone-form
+    *ngIf="editing"
   [phone]="selectedPhone"
   (save)="onSave($event)"
   (cancel)="onCancel()"/>
+
   <div class="add-button-container" *ngIf="!editing">
          <button (click)="startAdd()" class="btn-add">Add New Game</button>
     </div>

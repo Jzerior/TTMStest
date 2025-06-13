@@ -3,10 +3,11 @@ import { PhoneForm } from '../../components/phone-form/phone-form';
 import { PhoneList } from '../../components/phone-list/phone-list';
 import { PhoneModel } from '../../models/phone-model';
 import { PhoneService } from '../../services/phone-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-phone-page',
-  imports: [PhoneForm,PhoneList],
+  imports: [PhoneForm,PhoneList,CommonModule],
   templateUrl: './phone-page.html',
   styleUrl: './phone-page.scss'
 })
@@ -17,6 +18,7 @@ export class PhonePage {
 
   constructor(private service: PhoneService) {
     this.loadPhones();
+    console.log('editing?', this.editing);
   }
 
   loadPhones(): void {
