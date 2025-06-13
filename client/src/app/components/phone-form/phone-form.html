@@ -1,1 +1,6 @@
-<p>phone-form works!</p>
+<form (ngSubmit)="onSubmit()">
+      <input [(ngModel)]="phone.number" name="number" placeholder="number" required />
+      <input [(ngModel)]="phone.name" name="name" placeholder="name" required />
+      <button type="submit">Save</button>
+      <button type="button" class="btn-cancel" (click)="cancel.emit()">Cancel</button>
+    </form>
